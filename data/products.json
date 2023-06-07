@@ -1,0 +1,12 @@
+[
+    { "id": 1, "name": "googlePixel7a", "priceInCents":49900, "inStock":true}, 
+    { "id": 2, "name": "samsungGalaxyZFlip3", "priceInCents":37200, "inStock":true}, 
+    { "id": 3, "name": "motoGpower", "priceInCents":13900, "inStock":false},
+    { "id": 1, "name": "nuB15", "priceInCents":10900, "inStock":true}, 
+    { "id": 2, "name": "lgVelvet5g", "priceInCents":27400, "inStock":true}, 
+    { "id": 3, "name": "iphone13", "priceInCents":66800, "inStock":true},
+    { "id": 3, "name": "iphone14ProMax", "priceInCents":127400, "inStock":true},
+    { "id": 3, "name": "iphone12Mini", "priceInCents":37500, "inStock":false}
+
+    
+]
