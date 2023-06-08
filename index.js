@@ -1,11 +1,11 @@
 const {readJSONFile, writeJSONFile}= require("./src/helpers")
 
-const{index, show, create, destroy, edit}= require("./src/appController")
+const{index, show, create, destroy, edit,updateShoppingCart,emptyShoppingCart}= require("./src/appController")
 
-let updatedCart = writeJSONFile('data',"cart.json")
+let updatedCart = readJSONFile('data',"cart.json")
+const inform= console.log
 
 function run(){
-    inform("Welcome to Shakas Mobile Phone Inventory App!")
 
     let products =readJSONFile("data","products.json")
     console.log("Here is the Data Read", products)
@@ -14,9 +14,13 @@ function run(){
 
     const action= process.argv[2];
     const product = process.argv[3];
+    let updatedProducts = [];
 
     let writeToFile = false;
 
+    inform("Welcome to Shakas Mobile Phone Inventory App!")
+
+    
     switch (action){
         
         case "index":
@@ -25,8 +29,8 @@ function run(){
             break;
 
         case "show":
-            const productViewShow = show(products,product);
-            inform(productViewShow);
+            const productView = show(products,product);
+            inform(productView);
             break;
 
         case "create":
@@ -40,45 +44,48 @@ function run(){
             break;
 
          case "destroy":
-            updatedAProducts = destroy(products, product);
+            updatedProducts = destroy(products, product);
             writeToFile = true;
             break;
-            
-         
+           
+         case "updateShoppingCart":{
+                updatedProducts= updateShoppingCart(products, product, process.argv[4]);
+                        writeToFile = true;
+                        if (writeToFile) 
+                            writeJSONFile("data", "cart.json", updatedProducts);
+                        break;
+                        }
+                        
+         case "emptyShoppingCart":{
+                            updatedProducts= emptyShoppingCart(products, product);
+                                    writeToFile = true;
+                                    if (writeToFile) 
+                                        writeJSONFile("data", "cart.json", updatedProducts);
+                                    break;
+                                    }
+                                    
+     
     
-        default:
-                inform("Alert, action not possible");
+       default:
+                inform ("Alert, action not possible");
+     
         }
     
-
-
-
+    if (writeToFile) {
+      writeJSONFile("data", "products.json", updatedProducts);
     }
+    
+
+}
+
+    
 
     
 run()
 
 
-function updateShoppingCart(){
-    let products =readJSONFile("data","products.json")
-    //console.log("Here is the Data Read", products)
 
-  
 
-    const action= process.argv[2];
-    const product = process.argv[3];
-    switch (action){
 
-    case "updateCart":
-    updatedCart(products, product, process.argv[4]);
-            writeToFile = true;
-            break;
-            
-            
-            
-            default:
-                inform("Alert, action not possible");
-        }
-}
 
-updateShoppingCart()
+

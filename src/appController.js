@@ -2,31 +2,33 @@ const inform = console.log
 const chalk = require('chalk');
 const nanoid= require('nanoid');
 const faker = require('@faker-js/faker');
+//let id= nanoid()
+function index(products){
 
-function index(arrayOfProducts){
-
-    return arrayOfProducts.map((eachProduct)=> eachProduct.id+" "+ eachProduct.name).join("/n");
+    return products.map((eachProduct)=> eachProduct.id+" "+ eachProduct.name).join("/n");
 
 }
 
 
 function show(arrayOfProducts,productId){
-    const productToFind= arrayOfProducts.find((product)=> product.id === productId);
+    const product= arrayOfProducts.find((product)=> product.id === productId);
+    if(product){
 
-    return chalk.blue(productToFind.id) + " " + chalk.blue(productToFind.name) + " " + chalk.blue(productToFind.priceInCents + " " +chalk.blue(productToFind.inStock));
-
+    return product.id + " " + chalk.blue(product.name) + " " + chalk.blue(product.priceInCents + " " +chalk.blue(product.inStock));
+    }
 }
 
+
 function create (products, productName,productPriceInCents,productInStock) {
-    const newProduct = {
-        id: nanoid(4),
+    const product = {
+        id:nanoid(5),
       name: productName,
      priceInCents: productPriceInCents,
       inStock: productInStock
       
       
     };
-    products.push(newProduct);
+    products.push(product);
     return products;
 }
 
@@ -57,18 +59,32 @@ function edit(products, productId, updatedProduct,updatedPriceInCents,updatedInS
     }
 }
 
-function updateShoppingCart (products, productName,productPriceInCents,productInStock) {
-    const newProduct = {
-        id: nanoid(1),
-      name: productName,
-     priceInCents: productPriceInCents,
-      inStock: productInStock
-      
-      
-    };
-    products.push(newProduct);
-    return products;
-}
+function updateShoppingCart(products, productId) {
+ const  product =products.find((el => el.id === productId && el.inStock=== true))
 
 
-module.exports = { index, show, create, destroy, edit ,updateShoppingCart}
+
+   return products.push(product);
+
+};
+
+function emptyShoppingCart(products) {
+   
+     index = products.findIndex((el)=>{
+    if(el&&( index>-1)){
+        return products.slice(index,1)
+
+
+    }
+  
+})}
+     
+  
+  
+
+    
+    
+
+
+
+module.exports = { index, show, create, destroy, edit ,updateShoppingCart,emptyShoppingCart}

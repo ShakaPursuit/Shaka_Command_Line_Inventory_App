@@ -13,7 +13,7 @@
     "update": "node index.js update",
     "destroy": "node index.js destroy",
 
-    "updateCart": "node index.js updatwCart"
+    "updateCart": "node index.js updateCart"
   },
   "keywords": [],
   "author": "",

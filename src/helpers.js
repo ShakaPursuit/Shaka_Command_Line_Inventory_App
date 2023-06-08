@@ -1,10 +1,11 @@
 const { readFileSync, writeFileSync } = require("node:fs")
+//const fs = require('fs');
 
-const chalk = require('chalk');
+//const chalk = require('chalk');
 
-const { nanoid } = require('nanoid');
+//const { nanoid } = require('nanoid');
 
-const id =nanoid();
+//const id =nanoid();
 
 const {faker} = require('@faker-js/faker')
 
@@ -33,7 +34,7 @@ function writeJSONFile(path, fileName, data){
 module.exports = {
     readJSONFile, 
     writeJSONFile,
-    chalk,
-    id,
-    nanoid
+    //chalk,
+    //id,
+    //nanoid
 }
