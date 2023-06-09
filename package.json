@@ -13,10 +13,12 @@
     "update": "node index.js update",
     "destroy": "node index.js destroy",
 
-    "updateCart": "node index.js updateCart"
+    "updateShoppingCart": "node index.js updateShoppingCart",
+    "emptyShoppingCart": "node index.js emptyShoppingCart"
+
   },
   "keywords": [],
-  "author": "",
+  "author": "Shaka Livingstone",
   "license": "ISC",
   "dependencies": {
     "jest": "^29.5.0"

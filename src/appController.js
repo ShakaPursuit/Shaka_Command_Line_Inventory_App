@@ -1,8 +1,8 @@
 const inform = console.log
 const chalk = require('chalk');
-const nanoid= require('nanoid');
+const {nanoid}= require('nanoid');
 const faker = require('@faker-js/faker');
-//let id= nanoid()
+
 function index(products){
 
     return products.map((eachProduct)=> eachProduct.id+" "+ eachProduct.name).join("/n");
@@ -20,17 +20,24 @@ function show(arrayOfProducts,productId){
 
 
 function create (products, productName,productPriceInCents,productInStock) {
+   
+    if (process.argv[2]="create"){
     const product = {
-        id:nanoid(5),
-      name: productName,
-     priceInCents: productPriceInCents,
-      inStock: productInStock
+       
+
+       id : nanoid(4),
+      name: process.argv[3],//productName,
+     priceInCents: process.argv[4],//productPriceInCents,
+      inStock: process.argv[5]// productInStock
+       
       
       
     };
     products.push(product);
     return products;
 }
+}
+
 
 
 function destroy(products, productId) {
