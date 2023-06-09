@@ -28,26 +28,34 @@ function run(){
         case "index":
             const productsView = index(products);
             inform(productsView);
+
+    
             break;
 
         case "show":
             const productView = show(products,product);
             inform(productView);
+            
             break;
 
         case "create":
             updatedProducts= create(products, product);
             writeToFile = true;
+            
+            
             break;
 
         case "edit":
             updatedProducts= edit(products, product, process.argv[4]);
             writeToFile = true;
+            
             break;
 
          case "destroy":
             updatedProducts = destroy(products, product);
             writeToFile = true;
+            
+            
             break;
            
          case "updateShoppingCart":{
@@ -73,7 +81,7 @@ function run(){
      
         }
     
-    if (writeToFile) {
+    if (writeToFile&& "case" ==="show") {
       writeJSONFile("data", "products.json", updatedProducts);
     }
     

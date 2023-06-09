@@ -72,13 +72,13 @@ function edit(products, productId, updatedName,updatedPriceInCents,updatedInStoc
 }
 
 function updateShoppingCart( products,productId,cart) {
- const  product =products.find((el => el.id === productId||process.argv[3] && el.inStock=== true))
+ const  product =products.find((el => el.id === productId&& process.argv[3] && el.inStock=== true))
 
 
 
     products.push((cart));
 
-    return products
+    return product
 
 };
 
