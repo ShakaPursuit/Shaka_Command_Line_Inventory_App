@@ -38,7 +38,7 @@ function run(){
             writeToFile = true;
             break;
 
-        case "update":
+        case "edit":
             updatedProducts= edit(products, product, process.argv[4]);
             writeToFile = true;
             break;

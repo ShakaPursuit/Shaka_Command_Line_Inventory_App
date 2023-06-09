@@ -51,13 +51,13 @@ function destroy(products, productId) {
       return products;
     }
 }
-function edit(products, productId, updatedProduct,updatedPriceInCents,updatedInStock) {
+function edit(products, productId, updatedName,updatedPriceInCents,updatedInStock) {
     const index = products.findIndex((product) => product.id === productId);
     if (index > -1) {
-        products[index].id = productId;
-        products[index].name = updatedProduct;
-        products[index].priceInCents = updatedPriceInCents
-        products[index].inStock = updatedInStock;
+        products[index].id = productId||process.argv[3];
+        products[index].name = updatedName||process.argv[4];
+        products[index].priceInCents = updatedPriceInCents||process.argv[5];
+        products[index].inStock = updatedInStock||process.argv[6];
         inform("Product successfully updated");
         return products;
     } else {
