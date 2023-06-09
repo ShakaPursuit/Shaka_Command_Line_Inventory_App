@@ -2,19 +2,21 @@ const {readJSONFile, writeJSONFile}= require("./src/helpers")
 
 const{index, show, create, destroy, edit,updateShoppingCart,emptyShoppingCart}= require("./src/appController")
 
-let updatedCart = readJSONFile('data',"cart.json")
+
 const inform= console.log
 
 function run(){
 
     let products =readJSONFile("data","products.json")
-    console.log("Here is the Data Read", products)
+    let updatedCart = readJSONFile('data',"cart.json")
+    console.log("Here is the Data Read", products);
 
   
 
     const action= process.argv[2];
     const product = process.argv[3];
     let updatedProducts = [];
+    let reallyUpdatedCart=[];
 
     let writeToFile = false;
 
@@ -49,10 +51,10 @@ function run(){
             break;
            
          case "updateShoppingCart":{
-                updatedProducts= updateShoppingCart(products, product, process.argv[4]);
+                reallyUpdatedCart= updateShoppingCart(products, product, process.argv[3]);
                         writeToFile = true;
                         if (writeToFile) 
-                            writeJSONFile("data", "cart.json", updatedProducts);
+                            writeJSONFile("data", "cart.json", reallyUpdatedCart);
                         break;
                         }
                         
@@ -60,7 +62,7 @@ function run(){
                             updatedProducts= emptyShoppingCart(products, product);
                                     writeToFile = true;
                                     if (writeToFile) 
-                                        writeJSONFile("data", "cart.json", updatedProducts);
+                                        writeJSONFile("data", "cart.json", reallyUpdatedCart);
                                     break;
                                     }
                                     

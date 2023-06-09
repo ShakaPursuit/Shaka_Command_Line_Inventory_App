@@ -11,11 +11,16 @@ function index(products){
 
 
 function show(arrayOfProducts,productId){
-    const product= arrayOfProducts.find((product)=> product.id === productId);
-    if(product){
+    const product= arrayOfProducts.find((product)=> product.id === process.argv[3]);
+   if(product){
 
-    return product.id + " " + chalk.blue(product.name) + " " + chalk.blue(product.priceInCents + " " +chalk.blue(product.inStock));
+   return "{"+chalk.blue(product.id) + " " + chalk.blue(product.name) + " " + chalk.blue(product.priceInCents) + " " +chalk.blue(product.inStock)+"}";
+    
+    
     }
+    if(process.argv[3]=== "string")
+    return Object.values(product)
+
 }
 
 
@@ -43,7 +48,7 @@ function create (products, productName,productPriceInCents,productInStock) {
 function destroy(products, productId) {
     const index = products.findIndex((product) => product.id === productId);
     if (index > -1) {
-      products.splice(index, 1);
+      products.splice(index, 1||process.argv[3]);
       inform("Product successfully removed from collection");
       return products;
     } else {
@@ -66,12 +71,14 @@ function edit(products, productId, updatedName,updatedPriceInCents,updatedInStoc
     }
 }
 
-function updateShoppingCart(products, productId) {
- const  product =products.find((el => el.id === productId && el.inStock=== true))
+function updateShoppingCart( products,productId,cart) {
+ const  product =products.find((el => el.id === productId||process.argv[3] && el.inStock=== true))
 
 
 
-   return products.push(product);
+    products.push((cart));
+
+    return products
 
 };
 
@@ -85,8 +92,7 @@ function emptyShoppingCart(products) {
     }
   
 })}
-     
-  
+
   
 
     
