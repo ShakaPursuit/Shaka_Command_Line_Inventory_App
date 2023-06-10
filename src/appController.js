@@ -2,6 +2,8 @@ const inform = console.log
 const chalk = require('chalk');
 const {nanoid}= require('nanoid');
 const faker = require('@faker-js/faker');
+//let cart = readJSONFile('data',"cart.json");
+
 
 function index(products){
 
@@ -31,9 +33,9 @@ function create (products, productName,productPriceInCents,productInStock) {
        
 
        id : nanoid(4),
-      name: process.argv[3],//productName,
-     priceInCents: process.argv[4],//productPriceInCents,
-      inStock: process.argv[5]// productInStock
+      name: process.argv[3]||productName,
+     priceInCents: process.argv[4]||productPriceInCents,
+      inStock: process.argv[5]||productInStock
        
       
       
@@ -72,24 +74,32 @@ function edit(products, productId, updatedName,updatedPriceInCents,updatedInStoc
 }
 
 function updateShoppingCart( products,productId,cart) {
- const  product =products.find((el => el.id === productId&& process.argv[3] && el.inStock=== true))
+  
+ const  product =products.find((el =>( el.id === productId)||
+ (el.id===process.argv[3] && el.inStock=== "true")))
 
 
-
-    products.push((cart));
+// for (let i=0;i<products.length;i++){
+// if([i].id===process.argv[3]){
+    
+    //JSON.parse(products.push(([cart])));
+ products.push(([{cart}]));
+    
+//}
 
     return product
-
+ 
 };
 
 function emptyShoppingCart(products) {
    
      index = products.findIndex((el)=>{
-    if(el&&( index>-1)){
-        return products.slice(index,1)
+    if(el===products.id&&( index>-1)){
+        return products.slice(index,1||process.argv[3])
 
 
     }
+    return index
   
 })}
 
@@ -100,4 +110,4 @@ function emptyShoppingCart(products) {
 
 
 
-module.exports = { index, show, create, destroy, edit ,updateShoppingCart,emptyShoppingCart}
+module.exports = { index, show, create, destroy, edit ,updateShoppingCart,emptyShoppingCart,}

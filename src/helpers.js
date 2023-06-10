@@ -1,5 +1,5 @@
 const { readFileSync, writeFileSync } = require("node:fs")
-//const fs = require('fs');
+const fs = require('fs');
 
 //const chalk = require('chalk');
 
@@ -25,7 +25,7 @@ function readJSONFile(path, fileName){
 function writeJSONFile(path, fileName, data){
 
     data = JSON.stringify(data)
-    return writeFileSync(`${path}/${fileName}`, data, { encoding: "utf-8" })
+    return fs.writeFileSync(`${path}/${fileName}`, data, { encoding: "utf-8" })
 }
 
 

@@ -8,7 +8,7 @@ const inform= console.log
 function run(){
 
     let products =readJSONFile("data","products.json")
-    let updatedCart = readJSONFile('data',"cart.json")
+    let cart = readJSONFile('data',"cart.json")
     console.log("Here is the Data Read", products);
 
   
@@ -16,7 +16,7 @@ function run(){
     const action= process.argv[2];
     const product = process.argv[3];
     let updatedProducts = [];
-    let reallyUpdatedCart=[];
+  let reallyUpdatedCart=[[{},{},{},{},{},{},{},{},{},{},{},]];
 
     let writeToFile = false;
 
@@ -59,15 +59,15 @@ function run(){
             break;
            
          case "updateShoppingCart":{
-                reallyUpdatedCart= updateShoppingCart(products, product, process.argv[3]);
+               reallyUpdatedCart =updateShoppingCart(products,product,cart);
                         writeToFile = true;
                         if (writeToFile) 
-                            writeJSONFile("data", "cart.json", reallyUpdatedCart);
+                            writeJSONFile("data", "cart.json", [reallyUpdatedCart]);
                         break;
                         }
                         
          case "emptyShoppingCart":{
-                            updatedProducts= emptyShoppingCart(products, product);
+                            reallyUpdatedCart= emptyShoppingCart(products, cart,product,process.argv[4]);
                                     writeToFile = true;
                                     if (writeToFile) 
                                         writeJSONFile("data", "cart.json", reallyUpdatedCart);
@@ -81,7 +81,7 @@ function run(){
      
         }
     
-    if (writeToFile&& "case" ==="show") {
+    if (writeToFile && "case" ==="show") {
       writeJSONFile("data", "products.json", updatedProducts);
     }
     
