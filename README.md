@@ -1,4 +1,31 @@
 # Shaka_Command_Line_Inventory_App
+Welcome to my mobile phone inventory app
+
+To see Products
+
+run npm commands
+
+
+To CREATE NEW PRODUCT= npm run create "new product name" "price in cents" "inStock"
+TO EDIT/UPDATE PRODUCT=  npm run edit "update id of product" "updatename" "update price in cents" "update in stock"
+
+TO SHOW A SPECIFIC= npm run show "id number"
+
+TO DELETE PRODUCT FROM INVENTORY = npm run destroy "id of product you want to remove"
+
+TO UPDATE SHOPPING CART= npm run updateShoppingCart "id of product"
+
+TO EMPTY SHOPPING CART= npm rum emptyShoppingCart "id of product"
+
+TO SHOW WHOLE INVENTORY= npm run index
+
+
+
+
+
+
+
+
 command line inventory app
 Command-line Inventory Application Project
 Bringing together all you've learned so far, about JavaScript and building applications, build a Command-line Inventory Application. It will be an application where employees can keep track of the inventory of a store. Employees can create new items, update items, see a list of items, see details of one item and delete items. Your application should choose a particular resource or theme and be named appropriately.
@@ -55,4 +82,4 @@ There are no tests for this project and you should not fork and clone this repos
 Example
 For example, you can choose to track the inventory of "cookies" at a bakery. In that case, the keys you store for each cookie could be "name", "priceInCents", "inStock", and "isVegan". Alternatively, you could track "shoes" at a shoe store. In addition to the required keys, you might also track shoeSize.
 
-[{"id":"1","name":"googlePixel7a","priceInCents":49900,"inStock":true},{"id":"2","name":"samsungGalaxyZFlip3","priceInCents":37200,"inStock":true},{"id":"3","name":"motoGpower","priceInCents":13900,"inStock":false},{"id":"4","name":"nuB15","priceInCents":10900,"inStock":true},{"id":"5","name":"lgVelvet5g","priceInCents":27400,"inStock":true},{"id":"6","name":"iphone13","priceInCents":66800,"inStock":true},{"id":"7","name":"iphone14ProMax","priceInCents":127400,"inStock":true},{"id":"8","name":"iphone12Mini","priceInCents":37500,"inStock":false},{"id":"SX3_","name":"ShakasUltimatePhone","priceInCents":"20000","inStock":"yes"},{"id":"bp-P","name":"conceptAppleVisionPro","priceInCents":"400000","inStock":"yes"}]
+<!-- [{"id":"1","name":"googlePixel7a","priceInCents":49900,"inStock":true},{"id":"2","name":"samsungGalaxyZFlip3","priceInCents":37200,"inStock":true},{"id":"3","name":"motoGpower","priceInCents":13900,"inStock":false},{"id":"4","name":"nuB15","priceInCents":10900,"inStock":true},{"id":"5","name":"lgVelvet5g","priceInCents":27400,"inStock":true},{"id":"6","name":"iphone13","priceInCents":66800,"inStock":true},{"id":"7","name":"iphone14ProMax","priceInCents":127400,"inStock":true},{"id":"8","name":"iphone12Mini","priceInCents":37500,"inStock":false},{"id":"SX3_","name":"ShakasUltimatePhone","priceInCents":"20000","inStock":"yes"},{"id":"bp-P","name":"conceptAppleVisionPro","priceInCents":"400000","inStock":"yes"}] -->

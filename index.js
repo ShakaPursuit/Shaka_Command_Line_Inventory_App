@@ -2,7 +2,7 @@ const {readJSONFile, writeJSONFile}= require("./src/helpers")
 
 const{index, show, create, destroy, edit,updateShoppingCart,emptyShoppingCart}= require("./src/appController")
 
-
+const fs = require('fs');
 const inform= console.log
 
 function run(){
@@ -16,7 +16,7 @@ function run(){
     const action= process.argv[2];
     const product = process.argv[3];
     let updatedProducts = [];
-  let reallyUpdatedCart=[[{},{},{},{},{},{},{},{},{},{},{},]];
+reallyUpdatedCart=[];
 
     let writeToFile = false;
 
@@ -59,18 +59,26 @@ function run(){
             break;
            
          case "updateShoppingCart":{
-               reallyUpdatedCart =updateShoppingCart(products,product,cart);
+        reallyUpdatedCart= updateShoppingCart(products,product,cart);
+          // JSON.parse(products.push(reallyUpdatedCart))
                         writeToFile = true;
+                       
+                        
+     
+//products.push(cart);
+     
+
+                        
                         if (writeToFile) 
-                            writeJSONFile("data", "cart.json", [reallyUpdatedCart]);
+                            writeJSONFile("data", "cart.json",reallyUpdatedCart);
                         break;
-                        }
+         }
                         
          case "emptyShoppingCart":{
                             reallyUpdatedCart= emptyShoppingCart(products, cart,product,process.argv[4]);
                                     writeToFile = true;
                                     if (writeToFile) 
-                                        writeJSONFile("data", "cart.json", reallyUpdatedCart);
+                                        writeJSONFile("data", "cart.json",updatedProducts);
                                     break;
                                     }
                                     
@@ -82,7 +90,7 @@ function run(){
         }
     
     if (writeToFile && "case" ==="show") {
-      writeJSONFile("data", "products.json", updatedProducts);
+      writeJSONFile("data", "products.json",  updatedProducts);
     }
     
 
@@ -91,7 +99,7 @@ function run(){
     
 
     
-run()
+run();
 
 
 
