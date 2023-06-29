@@ -6,16 +6,34 @@ To see Products
 run npm commands
 
 
-To CREATE NEW PRODUCT= npm run create "new product name" "price in cents" "inStock"
-TO EDIT/UPDATE PRODUCT=  npm run edit "update id of product" "updatename" "update price in cents" "update in stock"
+To CREATE NEW PRODUCT= npm run create (newProductName) (newProductPriceInCents) (inStockBoolean)
 
-TO SHOW A SPECIFIC= npm run show "id number"
+example = npm run create GarysNewIphone 1000000 true
 
-TO DELETE PRODUCT FROM INVENTORY = npm run destroy "id of product you want to remove"
+example2 = npm run create AppleAirPodsPro 50000 true
+
+
+
+TO EDIT/UPDATE PRODUCT=  npm run edit (productId) (updateNameIfNeeded) (newPriceInCents) (inStockBoolean)
+
+example = npm run edit 1 googlePixel7a 40000 false
+
+
+
+TO SHOW A SPECIFIC PRODUCT = npm run show (idnumber)
+
+example = npm run show 4
+
+example2= npm run show SX3_
+
+TO DELETE PRODUCT FROM INVENTORY = npm run destroy (productId)
+
+example = npm run destroy 8
+
 
 TO UPDATE SHOPPING CART= npm run updateShoppingCart "id of product"
 
-TO EMPTY SHOPPING CART= npm rum emptyShoppingCart "id of product"
+TO EMPTY SHOPPING CART= npm run emptyShoppingCart "id of product"
 
 TO SHOW WHOLE INVENTORY= npm run index
 

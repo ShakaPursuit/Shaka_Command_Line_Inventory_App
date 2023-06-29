@@ -3,8 +3,9 @@ const chalk = require('chalk');
 const {nanoid}= require('nanoid');
 const faker = require('@faker-js/faker');
 const { readJSONFile, writeJSONFile } = require('./helpers');
-const cartt= readJSONFile('data',"cart.json");
-//let cart = readJSONFile('data',"cart.json");
+ const cart=readJSONFile('data',"cart.json");
+ 
+
 
 
 function index(products){
@@ -18,7 +19,7 @@ function show(arrayOfProducts,productId){
     const product= arrayOfProducts.find((product)=> product.id === process.argv[3]);
    if(product){
 
-   return "{"+chalk.blue(product.id) + " " + chalk.blue(product.name) + " " + chalk.blue(product.priceInCents) + " " +chalk.blue(product.inStock)+"}";
+   return "{"+chalk.blue(product.id) + " " + chalk.redBright(product.name) + " " + chalk.yellowBright(product.priceInCents) + " " +chalk.blue(product.inStock)+"}";
     
     
     }
@@ -75,28 +76,38 @@ function edit(products, productId, updatedName,updatedPriceInCents,updatedInStoc
     }
 }
 
-function updateShoppingCart( products,productId,cart) {
+function updateShoppingCart(products, productId, cart) {
+
+
+
+
+
+    const product =
+        products.filter((product) => product.id === process.argv[3] && productId === product.id &&
+            product.inStock === "true");
+
+    if (product) {
+        // if( Object.values(products).includes(productId===process.argv[3])){
+
+        // products.push(products.splice(index, 1));
+        //  products.push(cart)
 
     
-
-  
- const  product =products.filter((el) => el.id===process.argv[3]&&productId===el.id&&
-  el.inStock=== "true");
-  
-  if(productId=== process.argv[3]){
-   // if( Object.values(products).includes(productId===process.argv[3])){
-
-products.push(products.splice(index,1));
-  
-  }
-  return product
-
-
+    // return products.push([cart])
+        
+    return Object.values(product)
+    }
 }
+    // if(process.argv[3]=== "updateShoppingCart")
+    // return Object.values(product)
+
+ function returnItemsInStock (products){
+    products.filter((product)=> product.inStock === "true"||"yes");
+
+    return products
+ }
 
 
-
-  
 
 
  
@@ -141,4 +152,4 @@ function emptyShoppingCart(products) {
 
 
 
-module.exports = { index, show, create, destroy, edit ,updateShoppingCart,emptyShoppingCart,}
+module.exports = { index, show, create, destroy, edit ,updateShoppingCart,emptyShoppingCart}

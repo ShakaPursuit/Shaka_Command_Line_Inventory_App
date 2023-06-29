@@ -1,8 +1,8 @@
 const {readJSONFile, writeJSONFile}= require("./src/helpers")
 
 const{index, show, create, destroy, edit,updateShoppingCart,emptyShoppingCart}= require("./src/appController")
-
-const fs = require('fs');
+// const{updateShoppingCart,emptyShoppingCart}=require("./src/cartController")
+const {fs} = require('fs');
 const inform= console.log
 
 function run(){
@@ -16,7 +16,7 @@ function run(){
     const action= process.argv[2];
     const product = process.argv[3];
     let updatedProducts = [];
-reallyUpdatedCart=[];
+let reallyUpdatedCart=[];
 
     let writeToFile = false;
 
@@ -59,17 +59,19 @@ reallyUpdatedCart=[];
             break;
            
          case "updateShoppingCart":{
-        reallyUpdatedCart= updateShoppingCart(products,product,cart);
-          // JSON.parse(products.push(reallyUpdatedCart))
+       reallyUpdatedCart= updateShoppingCart(products,product,cart);
+        //    JSON.parse(products.push(reallyUpdatedCart))
                         writeToFile = true;
                        
                         
      
-//products.push(cart);
+                        //   products.push(cart);
      
 
                         
-                        if (writeToFile) 
+                        if (writeToFile ) 
+
+                      
                             writeJSONFile("data", "cart.json",reallyUpdatedCart);
                         break;
          }
@@ -77,8 +79,8 @@ reallyUpdatedCart=[];
          case "emptyShoppingCart":{
                             reallyUpdatedCart= emptyShoppingCart(products, cart,product,process.argv[4]);
                                     writeToFile = true;
-                                    if (writeToFile) 
-                                        writeJSONFile("data", "cart.json",updatedProducts);
+                                    if (writeToFile && "case"==="emptyShoppingCart") 
+                                        writeJSONFile("data", "cart.json",reallyUpdatedCart);
                                     break;
                                     }
                                     
@@ -88,8 +90,10 @@ reallyUpdatedCart=[];
                 inform ("Alert, action not possible");
      
         }
-    
-    if (writeToFile && "case" ==="show") {
+    // if(writeToFile){
+    //  if (writeToFile) {
+        // "case"==="edit"||"show"
+        if (writeToFile ) { 
       writeJSONFile("data", "products.json",  updatedProducts);
     }
     
