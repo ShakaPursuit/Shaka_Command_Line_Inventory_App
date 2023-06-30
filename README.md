@@ -38,6 +38,11 @@ TO EMPTY SHOPPING CART= npm run emptyShoppingCart "id of product"
 TO SHOW WHOLE INVENTORY= npm run index
 
 
+After you make a change show inventory to see change made
+
+npm run index
+
+
 
 
 
